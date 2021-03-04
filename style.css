@@ -56,4 +56,21 @@ h2 {
 	padding: 15px;
 }
 
+.sucesso {
+	padding: 10px;
+	border-collapse: collapse;
+	border-style: ;
+	border-color: #228B22;
+	background-color: #dcfadc;
+	color: #228B22;	
+}
 
+.erro {
+	padding: 10px;
+	flex-grow: 1;
+	border-style: ;
+	border-color: #F2DEDE;
+	background-color: #F2DEDE;
+	color: #A94442;
+	font-weight: bold;
+}

@@ -7,6 +7,7 @@ if ($_POST) {
     $autonomia = $_POST['autonomia'];
     
     if (is_numeric($distancia) && is_numeric ($autonomia)) {
+        
         if ($distancia > 0 && $autonomia > 0){
             $valorGasolina = 4.80;
             $valorAlcool = 3.80;
@@ -21,19 +22,30 @@ if ($_POST) {
             $calculoDiesel = ($distancia / $autonomia) * $valorDiesel;
             $calculoDiesel = number_format ($calculoDiesel, 2, ',','.');
             
-            $mensagem.= "<p>O valor do consumo em Gasolina foi de: R$".$calculoGasolina."</p>";
-            $mensagem.= "<p>O valor do consumo em Alcool foi de: R$".$calculoAlcool."</p>";
-            $mensagem.= "<p>O valor do consumo em Diesel foi de: R$".$calculoDiesel."</p>";
-        } else {
-            $mensagem = "<p>O valor recebido não é um número válido.</p>";
+            $mensagem.= "<div class='sucesso'>";
+            $mensagem.= "O valor total gasto será de : ";
+            $mensagem.= "<ul>";
+            $mensagem.= "<li><b>Gasolina: </b>R$ ".$calculoGasolina."</li>";
+            $mensagem.= "<li><b>Alcool: </b>R$ ".$calculoAlcool."</li>";
+            $mensagem.= "<li><b>Diesel: </b>R$ ".$calculoDiesel."</li>";
+            $mensagem.= "</ul>";
+            $mensagem.= "</div>";
+         } else {
+             $mensagem.= "<div class='erro'>";
+             $mensagem.= "<p>O valor recebido não é numérico.</p>";
+             $mensagem.= "</div>";
         }
        
     } else {
+        $mensagem.= "<div class='erro'>";
         $mensagem = "<p>O valor da distância e da autonomia deve ser maior que zero.</p>";
+        $mensagem.= "</div>";
     }
     
 } else {
-    echo "<p>Nenhum dado foi recebido pelo formulário.</p>";
+    $mensagem.= "<div class='erro'>";
+    $mensagem = "<p>Nenhum dado foi recebido pelo formulário.</p>";
+    $mensagem.= "</div>";
 }
 ?> 
 
